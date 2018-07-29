@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+	<bean id="exampleBean3" class="org.spring.ch01.di.ExampleBean3">
+		<property name="emails"><!--emails属性是Properties类型  -->
+			<props>
+				<prop key="administrator">administrator@example.com</prop>
+				<prop key="manager">manager@example.com</prop>
+				<prop key="worker">worker@example.com</prop>
+			</props>
+		</property>
+		<property name="stringList"><!--stringList属性是List<String>  -->
+			<list>
+				<value>IoC</value>
+				<value>DI</value>
+				<value>Spring</value>
+			</list>
+		</property>
+		<property name="beanList"><!--beanList属性是List<ExamplBean>  -->
+			<list>
+				<ref bean="exampleBean"/> <!--第一个元素，引用bean作为List的元素  -->
+				<bean class="org.spring.ch01.di.ExampleBean"/><!--第二个元素，匿名bean  -->
+			</list>
+		</property>
+		<property name="someMap"><!-- someMap属性是Map<String,String>类型 -->
+			<map>
+				<entry><!-- 第一个元素 -->
+					<key><value>admin</value></key><!-- 键 -->
+					<value>administrator@example.com</value><!--值  -->
+				</entry>
+				<entry><!--第二个元素  -->
+					<key><value>manager</value></key>
+					<value>manager@example.com</value>
+				</entry>
+			</map>
+		</property>
+		<property name="someSet"><!--someSet属性的类型是Set<String>  -->
+			<set>
+				<value>J2SE</value>
+				<value>J2ME</value>
+				<value>J2EE</value>
+			</set>
+		</property>
+		<property name="whitesequence"><value/></property>
+		<property name="nullObject"><null/></property>
+	</bean>	
+	<bean id="exampleBean" class="org.spring.ch01.di.ExampleBean">
+		<property name="id" value="12345">
+		</property>
+	</bean>	
+</beans>
